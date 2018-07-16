@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>W3.CSS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script type="text/javascript">
+		
+			function getRandomColor() {
+			  var letters = '0123456789ABCDEF';
+			  var color = '#';
+			  for (var i = 0; i < 6; i++) {
+				color += letters[Math.floor(Math.random() * 16)];
+			  }
+			  return color;
+			}
+
+			function setRandomColor() {
+			  $("#div").css("background-color", getRandomColor());
+			}
+			
+			function createNode(){
+				var newDiv = document.createElement("div"); 
+					newDiv.setAttribute("class", "democlass"); 
+				var x = document.createElement("INPUT"); 
+					x.setAttribute("class", "demoinput"); 
+				var y = document.createElement("INPUT");
+					y.setAttribute("class", "demoaddress"); 
+					y.setAttribute("readonly", "true"); 
+				document.getElementById("List").appendChild(newDiv);
+				document.getElementById("List").appendChild(x);
+				document.getElementById("List").appendChild(y);
+			}
+			
+			function deleteNode(){
+				var list = document.getElementById("List");  
+				list.removeChild(list.childNodes[2]);     									
+			}
+			
+			
+		</script>
+	<style>
+	.w3-button {width:100%;border-radius:2px;outline:0px;}
+	.democlass {
+	   width:181px;
+	   height: 2px;
+	   margin-top:10px;
+	   background-color: #fff;
+     -webkit-animation: random 10s infinite;
+     animation: random 10s infinite;
+	}
+	@keyframes  random {	
+		15% { background-color: dodgerblue; } 
+		30% { background-color: tomato; } 
+		45% { background-color: lightgreen; } 
+		60% { background-color: dodgerblue; }
+		75% { background-color: orange; }  
+	}
+	.demoinput {
+	   padding:10px;
+	   color: black;
+	}
+	.demoaddress {
+	   padding:10px;
+	   color: lightgrey;
+	}
+	</style>
+</head>
+<body class="w3-small">
+	<div class="w3-container w3-green" style="box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;">
+		  <h3>Singly Linked List</h3>
+	</div> 
+	<div style="margin-left: auto; margin-right: auto; width: 70%;">
+		 <div class="w3-margin w3-panel w3-blue w3-round w3-normal" style="box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;">
+		  <p>Performing the Basic Operation on a list</p>
+		</div> 
+	</div>
+	<div style="margin-left: auto; margin-right: auto; width: 70%;">
+		 <div class="w3-margin w3-panel w3-white w3-round">
+		  <p>
+		  	Given list, each of which data will be integer. The filled cells that are connected to form list. <br/>
+		  	Each Node are said to be linked if they are adjacent to each other <br/>
+		  	There may be multiple operations over the list.
+		  </p>
+		</div> 
+	</div>
+	
+	<div style="margin-left: auto; margin-right: auto; width: 70%;">
+	
+		<div class="w3-row w3-margin">
+		
+		  <div class="w3-container w3-twothird w3-cell w3-small">
+			<div class="w3-panel w3-display-container w3-round w3-center" style="border:1px dotted lightgrey;">
+				<span onclick="this.parentElement.style.display='none'" class="w3-button w3-lightgrey" style="background-color:#e8e8e8;margin-top:10px;">CLOSE</span>
+				<p class="w3-left-align">HELP: Structure of a Node</p> <br/>
+			</div>
+			<div class="w3-container w3-margin-top" id="List">
+				<div class="w3-row">
+					<div class="w3-col w3-text-grey w3-large w3-third w3-center">
+						Head  &nbsp;-->
+					</div>
+					<div class="w3-col w3-twothird">
+						<input class="w3-input w3-border" type="text" style="width:50%;" id="demoinput" readonly>
+					</div>
+				</div>
+			</div>
+		  </div>
+		  <div class="w3-center w3-round w3-border w3-third w3-cell">
+			<p>Actions</p>
+			<div class="w3-row w3-margin">
+				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:dodgerblue;"><i class="material-icons" style="font-size:25px;">add_box </i></div>
+				<div class="w3-rest w3-container"><button class="w3-button w3-blue" onclick="createNode()">Add Start Node</button></div>
+			</div>
+			<div class="w3-row  w3-margin">
+					<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:dodgerblue;"><i class="material-icons" style="font-size:25px;">add_box </i></div>
+				<div class="w3-rest w3-container"><button class="w3-button w3-cyan">Add Last Node</button></div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:dodgerblue;"><i class="material-icons" style="font-size:25px;">add_box </i></div>
+				<div class="w3-rest w3-container"><button class="w3-button w3-light-blue">Add Mid Node</button></div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:tomato;"><i class="material-icons" style="font-size:25px;">backspace </i></div>
+				<div class="w3-rest w3-container"><button class="w3-button w3-red">Delete First Node</button></div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:tomato;"><i class="material-icons" style="font-size:25px;">backspace </i></div>
+				<div class="w3-rest w3-container"><button class="w3-button w3-deep-orange" onclick="deleteNode()">Delete Last Node </button></div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:tomato;"><i class="material-icons" style="font-size:25px;">backspace </i></div>
+				<div class="w3-rest w3-container"><button class="w3-button w3-orange">Delete Mid Node</button></div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:grey;"><i class="material-icons" style="font-size:25px;">ballot </i></div>
+				<div class="w3-rest w3-container"><button class="w3-button w3-yellow">Traverse List</button></div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:black;"><i class="material-icons" style="font-size:25px;">delete_forever </i></div>
+				<div class="w3-rest w3-container"><button class="w3-button w3-teal">Delete List</button></div>
+			</div>
+		</div>
+		</div>
+	</div>
+</body>
