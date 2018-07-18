@@ -24,9 +24,7 @@
 				
 				addElement(data){
 					var node = new Node(data);
-					
 					var current;
-					console.log(current);
 					if(this.head==null){
 						this.head = node;
 					}
@@ -38,6 +36,30 @@
 						current.next = node;
 					}
 					this.size++;
+				}
+				
+				indexofElement(data){
+					var current = this.head;var count=0;
+					while(current!=null){
+						if(current.data ==data)
+							return count;
+						count++;
+						current = current.next;
+					}
+					return -1;
+				}
+				
+				elementAtIndex(index){
+					if(index<0 || index>=this.size)
+						return -1;
+					else{	
+						var current = this.head;var count =0;
+						while(count<index){
+							count++;
+							current = current.next;
+						}
+						return current.data;
+					}
 				}
 			}
 			
@@ -118,16 +140,95 @@
 					list.removeChild(list.childNodes[i]); 		
 				}					
 			}
+			
+			
+			function getIndexOfElement(){
+					var element = document.getElementById("get-Index-Of-Element-Input").value;
+					console.log(element);
+					var foundIndex = llist.indexofElement(element);
+					console.log(foundIndex);
+					if(foundIndex!='-1')
+						document.getElementById("result").innerHTML = 'Found Element At Index : '+foundIndex;
+					else	
+						document.getElementById("result").innerHTML = 'Element not Found !';
+			}
+			
+			
+			function getElementOfIndex(){
+					var index = document.getElementById("get-Element-At-Index-Input").value;
+					console.log(index);
+					var foundElement = llist.elementAtIndex(index);
+					console.log(foundElement);
+					if(foundElement!='-1')
+						document.getElementById("result").innerHTML = 'Found Element : '+foundElement;
+					else	
+						document.getElementById("result").innerHTML = 'Index out of Range!';
+			}
+			
+			function getElementAtIndexToogle(){
+				    var x = document.getElementById("get-Element-At-Index-Input");
+					var y = document.getElementById("get-Element-At-Index-Input-Button");
+					
+					if (x.style.display === "none") {
+						x.style.display = "block";
+						y.style.display = "block";
+					} else {
+						y.style.display = "none";
+						x.style.display = "none";
+					}
+								
+			}
+			
+			function getIndexOfElementToogle(){
+					var x = document.getElementById("get-Index-Of-Element-Input");
+					var y = document.getElementById("get-Index-Of-Element-Input-Button");
+					
+					if (x.style.display === "none") {
+						x.style.display = "block";
+						y.style.display = "block";
+					} else {
+						y.style.display = "none";
+						x.style.display = "none";
+					}
+			}
+			
+			function RemoveElementToogle(){
+					var x = document.getElementById("Remove-Element-Input");
+					var y = document.getElementById("Remove-Element-Input-Button");
+					
+					if (x.style.display === "none") {
+						x.style.display = "block";
+						y.style.display = "block";
+					} else {
+						y.style.display = "none";
+						x.style.display = "none";
+					}
+			}
+			
+			function RemoveElementAtIndexToogle(){
+					var x = document.getElementById("Remove-Element-At-Index-Input");
+					var y = document.getElementById("Remove-Element-At-Index-Input-Button");
+					
+					if (x.style.display === "none") {
+						x.style.display = "block";
+						y.style.display = "block";
+					} else {
+						y.style.display = "none";
+						x.style.display = "none";
+					}
+			}
 		</script>
 		<style>
 			.w3-button {width:100%;border-radius:2px;outline:0px;}
 			.democlass {
-			   width:362px;
+			   width:181px;
 			   height: 2px;
 			   margin-top:10px;
 			   background-color: #fff;
-			   -webkit-animation: random 10s infinite;
-			   animation: random 10s infinite;
+			   -webkit-animation: random 10s ;
+			   animation: random 10s ;
+			   margin-left:auto;
+			   margin-right:auto;
 			}
 			@keyframes random {	
 			   2% { background-color: dodgerblue; } 
@@ -136,10 +237,14 @@
 			.demoinput {
 			   padding:10px;
 			   color: black;
+			   margin-left:auto;
+			   margin-right:auto;
+			   width:15%;
 			}
 			.demoaddress {
 			   padding:10px;
 			   color: lightgrey;
+			   width:15%
 			}
 		</style>
 </head>
@@ -153,40 +258,93 @@
 		</div> 
 	</div>
 	<div style="margin-left: auto; margin-right: auto; width: 70%;">
-		 <div class="w3-margin w3-panel w3-white w3-round">
+		 <div class="w3-margin w3-panel w3-white w3-round w3-center">
 		  <p>
 		  	Given list, each of which data will be integer. The filled cells that are connected to form list. <br/>
-		  	Each Node are said to be linked if they are adjacent to each other <br/>
+		  	Each Node are said to be linked if they are adjacent to each other.
 		  	There may be multiple operations over the list.
 		  </p>
 		</div> 
 	</div>
-	
-	<div style="margin-left: auto; margin-right: auto; width: 70%;">
+	<div style="margin-left: auto; margin-right: auto; width: 100%;">
 	
 		<div class="w3-row w3-margin">
-		
-		  <div class="w3-container w3-twothird w3-cell w3-small">
-			<div class="w3-panel w3-display-container w3-round w3-center" style="border:1px dotted lightgrey;">
-				<span onclick="this.parentElement.style.display='none'" class="w3-button w3-lightgrey" style="background-color:#e8e8e8;margin-top:10px;">CLOSE</span>
-				<p class="w3-left-align">HELP: Structure of a Node</p> <br/>
+		  <div class="w3-container w3-border w3-round w3-quarter w3-cell w3-small">
+			<div class="w3-row w3-margin w3-center">
+				MORE ACTIONS
 			</div>
-			<div class="w3-container w3-margin-top">
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container"><button class="w3-button" style="background-color:#54a3f3;color:white;" onclick="getElementAtIndexToogle()">Get Element at Index</button></div>
 				<div class="w3-row">
-					<div class="w3-col w3-text-grey w3-large w3-third w3-center">
+					<div class="w3-col w3-half">
+						<input type="text" class="w3-input w3-margin" placeholder="Enter Index" style="width:90%;display:none;" id="get-Element-At-Index-Input" />
+					</div>
+					<div class="w3-col w3-half">
+						<button class="w3-button w3-light-grey w3-margin" onclick="getElementOfIndex()" id="get-Element-At-Index-Input-Button"  style="display:none;width:75%;">Search</button>
+					</div>
+				</div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container"><button class="w3-button" style="background-color:#6cb0f4; color:white;" onclick="getIndexOfElementToogle()">Get Index of Element</button></div>
+				<div class="w3-row">
+					<div class="w3-col w3-half">
+						<input type="text" class="w3-input w3-margin" placeholder="Enter Index" style="width:90%;display:none;" id="get-Index-Of-Element-Input" />
+					</div>
+					<div class="w3-col w3-half">
+						<button class="w3-button w3-light-grey w3-margin" onclick="getIndexOfElement()" id="get-Index-Of-Element-Input-Button"  style="display:none;width:75%;">Search</button>
+					</div>
+				</div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container"><button class="w3-button" style="background-color:#85bdf6; color:white;" onclick="RemoveElementToogle()">Remove Element</button></div>
+				<div class="w3-row">
+					<div class="w3-col w3-half">
+						<input type="text" class="w3-input w3-margin" placeholder="Enter Element" style="width:90%;display:none;" id="Remove-Element-Input" />
+					</div>
+					<div class="w3-col w3-half">
+						<button class="w3-button w3-light-grey w3-margin" onclick="RemoveElementToogle()" id="Remove-Element-Input-Button"  style="display:none;width:75%;">Remove</button>
+					</div>
+				</div>
+			</div>
+			<div class="w3-row  w3-margin">
+				<div class="w3-col w3-container"><button class="w3-button" style="background-color:#85bdf6; color:white;" onclick="RemoveElementAtIndexToogle()">Remove Element at Index</button></div>
+				<div class="w3-row">
+					<div class="w3-col w3-half">
+						<input type="text" class="w3-input w3-margin" placeholder="Enter Index" style="width:90%;display:none;" id="Remove-Element-At-Index-Input" />
+					</div>
+					<div class="w3-col w3-half">
+						<button class="w3-button w3-light-grey w3-margin" onclick="RemoveElementAtIndexToogle()" id="Remove-Element-At-Index-Input-Button"  style="display:none;width:75%;">Remove</button>
+					</div>
+				</div>
+			</div>
+			<div class="w3-panel w3-display-container w3-round w3-center" style="border:1px dotted lightgrey;">
+				<p class="w3-left-align">HELP: Structure of a Node</p> <br/>
+				<span onclick="this.parentElement.style.display='none'" class="w3-button w3-lightgrey" style="background-color:#e8e8e8;margin-bottom:10px;">close x</span>
+			</div>
+		  </div>
+		  
+		  <div class="w3-container w3-half w3-cell w3-small">
+			
+			<div class="w3-container">
+				<div>
+					<p id="result" class="w3-center w3-round w3-light-grey w3-large"></p>
+				</div>
+				<div class="w3-row">
+					<div class="w3-col w3-text-grey w3-third w3-center">
 						Head  &nbsp;->
 					</div>
 					<div class="w3-col w3-twothird">
-						<input class="w3-input w3-border" type="text" style="width:50%;" id="demoinput" readonly>
+						<input class="w3-input w3-border" type="text" style="width:22%;margin-left:25%;" id="demoinput" readonly>
 					</div>
 				</div>
-				<div class="w3-row" id="List">
+				<div class="w3-row w3-center" id="List">
 				
 				</div>
 			</div>
+			
 		  </div>
-		  <div class="w3-center w3-round w3-border w3-third w3-cell">
-			<p>Actions</p>
+		  <div class="w3-center w3-round w3-border w3-quarter w3-cell">
+			<p>ACTIONS</p>
 			<div class="w3-row w3-margin">
 				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:dodgerblue;"><i class="material-icons" style="font-size:25px;">add_box </i></div>
 				<div class="w3-rest w3-container"><button class="w3-button w3-blue"  onclick="createFirstNode()" >Add Start Node</button></div>
@@ -219,6 +377,7 @@
 				<div class="w3-col w3-container" style="width:30px;padding-top:7px;color:black;"><i class="material-icons" style="font-size:25px;">delete_forever </i></div>
 				<div class="w3-rest w3-container"><button class="w3-button w3-teal" onclick="deleteAllNode()">Delete List</button></div>
 			</div>
+			
 		</div>
 		</div>
 	</div>
